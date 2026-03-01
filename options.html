@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plus One Thing — Settings</title>
+  <style>
+    :root {
+      --bg: #fafafa; --fg: #1a1a2e; --card: #ffffff; --border: #e0e0e0;
+      --accent: #6c5ce7; --accent-hover: #5b4bd5; --success: #10b981;
+      --error: #ef4444; --muted: #888;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1a2e; --fg: #e0e0e0; --card: #16213e; --border: #2a2a4a;
+        --accent: #a29bfe; --accent-hover: #6c5ce7; --muted: #888;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg); color: var(--fg);
+      display: flex; justify-content: center; padding: 2rem;
+    }
+    .container { max-width: 480px; width: 100%; }
+    h1 { font-size: 1.4rem; margin-bottom: 1.5rem; }
+    .field { margin-bottom: 1rem; }
+    label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem; color: var(--muted); }
+    input {
+      width: 100%; padding: 0.5rem 0.75rem; border: 1px solid var(--border);
+      border-radius: 6px; background: var(--card); color: var(--fg);
+      font-size: 0.95rem; outline: none;
+    }
+    input:focus { border-color: var(--accent); }
+    .row { display: flex; gap: 0.75rem; }
+    .row .field { flex: 1; }
+    .actions { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+    button {
+      padding: 0.5rem 1.25rem; border: none; border-radius: 6px;
+      font-size: 0.9rem; cursor: pointer; font-weight: 600;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-secondary { background: var(--border); color: var(--fg); }
+    #status {
+      margin-top: 1rem; padding: 0.5rem; border-radius: 6px;
+      font-size: 0.85rem; display: none;
+    }
+    #status.success { display: block; background: #d1fae5; color: #065f46; }
+    #status.error { display: block; background: #fee2e2; color: #991b1b; }
+    @media (prefers-color-scheme: dark) {
+      #status.success { background: #064e3b; color: #6ee7b7; }
+      #status.error { background: #7f1d1d; color: #fca5a5; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Plus One Thing Settings</h1>
+
+    <div class="row">
+      <div class="field">
+        <label for="host">Host</label>
+        <input type="text" id="host" value="http://127.0.0.1" placeholder="http://127.0.0.1">
+      </div>
+      <div class="field" style="max-width:100px">
+        <label for="port">Port</label>
+        <input type="number" id="port" value="27124" placeholder="27124">
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="apiKey">API Key</label>
+      <input type="password" id="apiKey" placeholder="Obsidian Local REST API key">
+    </div>
+
+    <div class="field">
+      <label for="dailyFolder">Daily Note Folder</label>
+      <input type="text" id="dailyFolder" value="Daily" placeholder="Daily">
+    </div>
+
+    <div class="field">
+      <label for="projects">Projects (comma-separated)</label>
+      <input type="text" id="projects" value="personal-ai" placeholder="personal-ai, procenteo">
+    </div>
+
+    <div class="field">
+      <label for="defaultProject">Default Project</label>
+      <input type="text" id="defaultProject" value="personal-ai" placeholder="personal-ai">
+    </div>
+
+    <div class="actions">
+      <button class="btn-primary" id="save">Save</button>
+      <button class="btn-secondary" id="test">Test Connection</button>
+    </div>
+
+    <div id="status"></div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
